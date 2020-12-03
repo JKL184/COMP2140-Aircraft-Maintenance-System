@@ -45,11 +45,11 @@ public class Aircraft{
      */
     public HashMap<String,String> get_Aircraft_info(){
         HashMap<String,String> map=new HashMap<String,String>();//Creating HashMap
-        map.put("make",this.make);    
-        map.put("model",this.model);    
-        map.put("serial_no",this.serial_no);    
-        map.put("registration_no",this.registration_no);    
-        map.put("dop",this.dop);    
+        map.put("Aircraft Make",this.make);    
+        map.put("Model",this.model);    
+        map.put("Serial #",this.serial_no);    
+        map.put("Registration #",this.registration_no);    
+        map.put("Date Made",this.dop);    
         return map;
     }
 
@@ -58,8 +58,8 @@ public class Aircraft{
      */
     public HashMap<String,Double> get_tach_hobbs(){
         HashMap<String,Double> map=new HashMap<String,Double>();//Creating HashMap
-        map.put("tach",this.tach);    
-        map.put("hobbs",this.hobbs);    
+        map.put("Tach",this.tach);    
+        map.put("Hobbs",this.hobbs);    
         return map;
     }
 
@@ -92,5 +92,10 @@ public class Aircraft{
             finalString += component.toString() + "\n";
         }
         return finalString;
+    }
+
+
+    public ArrayList<Components> getComponents(){
+        return this.components;
     }
 }
