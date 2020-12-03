@@ -10,13 +10,13 @@ import java.util.*;
 public class Operations {
     private int id;
     private String description;
-    // private float interval;
-    // private int dueDate;
+    private int interval;
+    private int dueDate;
     private float timeRemaining;
     private float dateCW;
     private String note;
 
-    public Operations(int id, String description, float interval, int dueDate, float timeRemaining, float dateCW, String note){
+    public Operations(int id, String description, int interval, int dueDate, float timeRemaining, float dateCW, String note){
         this.id = id;
         this.description = description;
         this.interval = interval;
@@ -26,31 +26,31 @@ public class Operations {
         this.note = note;
     }
 
-    public getID(){
+    public int getID(){
         return this.id;
     }
 
-    public getDescription(){
+    public String getDescription(){
         return this.description;
     }
 
-    public getDateCW(){
+    public float getDateCW(){
         return this.dateCW;
     }
 
-    public getRemainingTime(){
+    public float getRemainingTime(){
         return this.timeRemaining;
     }
 
-    public getNote(){
+    public String getNote(){
         return this.note;
     }
 
-    public updateNote(String note){
+    public String updateNote(String note){
         this.note = note;
     }
 
-    public updateDescription(String description){
+    public String updateDescription(String description){
         this.description = description;
     }
 }
