@@ -1,11 +1,12 @@
 package aircraft;
+import java.util.*;  
 /**
  * The Aircraft class contains information on a single Aircraft.
  * @author Tadave Brown
  * @version 1.0
  * @since 2020-11-21
  */
-public class Components{
+public class Aircraft{
     private String make;
     private String model;
     private String serial_no;
@@ -27,7 +28,7 @@ public class Components{
          * @param hobbs represents the number on the hobbs meter of the aircraft.
          * @param operations represents the operations of the aircraft.
          */
-public Component(String make, String model,String serial_no,String registration_no, String dop, String inspec_time, float tach, float hobbs, Operations operations){
+public Aircraft(String make, String model,String serial_no,String registration_no, String dop, String inspec_time, float tach, float hobbs, Operations operations){
     this.make=make;
     this.model=model;
     this.serial_no=serial_no;
@@ -40,37 +41,30 @@ public Component(String make, String model,String serial_no,String registration_
 }
 
 /** 
- * @return String that represents the components's unique serial_no
+ * @return String that represents the Aircrafts's unique serial_no
  * Accessor method to return the serial#
  */
-public String get_serialno(){
-    return serial_no;
+public HashMap get_Aircraft_info(){
+    HashMap<String,String> map=new HashMap<String,String>();//Creating HashMap
+    map.put("make",this.make);    
+    map.put("model",this.model);    
+    map.put("serial_no",this.serial_no);    
+    map.put("registration_no",this.registration_no);    
+    map.put("dop",this.dop);    
+    return map;
 }
 
-/** 
- * @return String that represents the components's name
- * Accessor method to return the name of component
- */
-public String get_name(){
-    return item_name;
+public HashMap get_tach_hobbs(){
+    HashMap<String,float> map=new HashMap<String,float>();//Creating HashMap
+    map.put("tach",this.tach);    
+    map.put("hobbs",this.hobbs);    
+    return map;
 }
 
-/** 
- * @return String that represents the components's maintenance information
- * Accessor method to return the maintenance information of the component
- */
-public String get_maint_info(){
-    return maint_info;
+public String getInsp(){
+    return this.inspec_time;
 }
 
-/** 
- * @param ID represents the ID of the engineer that will be assigned to the component
- * Mutator method that sets the maintenance engineer of the component
-     */
-public void  append_engineer(String ID){
-    this.maint_engineer=ID;
-}
-
-public void  update_date(String new_date){
-    this.maint_date=new_date;
+public Operations getOperations(){
+    return this.operations;
 }
