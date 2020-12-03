@@ -21,7 +21,7 @@ public class Components{
          * @param maint_info represents the information about maintenance
          * @param maint_cost represents the cost of maintenance
          */
-public Component(String item_name,String serial_no,String maint_info,int maint_cost,String maint_interval,String maint_date){
+public Components(String item_name,String serial_no,String maint_info,int maint_cost,String maint_interval,String maint_date){
     this.item_name=item_name;
     this.serial_no=serial_no;
     this.maint_info= maint_info;
