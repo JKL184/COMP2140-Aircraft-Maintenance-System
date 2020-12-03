@@ -1,5 +1,4 @@
 package aircraft;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;  
 import java.util.Date;
 /**
@@ -8,26 +7,24 @@ import java.util.Date;
  * @version 1.0
  * @since 2020-11-21
  */
-public class Components{
+public class Components implements Comparable<Components>{
     private String item_name;
     private String serial_no;
-    private String maint_info;
-    private int maint_cost;
+    private String remarks;
+    private double maint_cost;
     private String maint_engineer;
+    private double maint_interval;
     private Date maint_date;
-    private String maint_interval;
 
     /**
 	 * Constructor that accepts and stores the component name, serial#, information about component's maintenance, and cost of maintenance on the component.
          * @param item_name represents the component name
          * @param serial_no represents the serial_no of the component.
-         * @param maint_info represents the information about maintenance
          * @param maint_cost represents the cost of maintenance
          */
-    public Components(String item_name,String serial_no,String maint_info,int maint_cost,String maint_interval,String maint_date){
+    public Components(String item_name,String serial_no, double maint_cost,double maint_interval,String maint_date){
         this.item_name=item_name;
         this.serial_no=serial_no;
-        this.maint_info= maint_info;
         this.maint_cost=maint_cost;
         this.maint_interval=maint_interval;
         try{
@@ -59,8 +56,16 @@ public class Components{
      * @return String that represents the components's maintenance information
      * Accessor method to return the maintenance information of the component
      */
-    public String get_maint_info(){
-        return maint_info;
+    public void addRemark(String remark){
+        this.remarks = remark;
+    }
+
+    public String getRemark(){
+        return remarks;
+    }
+
+    public Date getMaintDate(){
+        return maint_date;
     }
 
     /** 
@@ -71,6 +76,8 @@ public class Components{
         this.maint_engineer=ID;
     }
 
+
+
     public void update_date(String new_date){
         try{
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(new_date);
@@ -79,5 +86,16 @@ public class Components{
         catch (Exception e){
             System.out.println("Invalid date format");
         }
+    }
+
+    
+
+    @Override
+    public int compareTo(Components o) {
+        return getMaintDate().compareTo(o.getMaintDate());
+    }
+
+    public String toString(){
+        return get_name() + " " + get_serialno() + " " + getMaintDate();
     }
 }

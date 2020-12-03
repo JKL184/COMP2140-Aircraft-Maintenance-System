@@ -6,7 +6,7 @@ import java.util.*;
  * @version 1.0
  * @since 2020-11-21
  */
-public class Aircraft implements Comparable<Components>{
+public class Aircraft{
     private String make;
     private String model;
     private String serial_no;
@@ -85,9 +85,12 @@ public class Aircraft implements Comparable<Components>{
         this.components.add(co);
     }
 
-    @Override
-    public int compareTo(Components o) {
-        // TODO Auto-generated method stub
-        return 0;
+    public String getPriorityList(){
+        Collections.sort(components);
+        String finalString = "";
+        for(Components component: components){
+            finalString += component.toString() + "\n";
+        }
+        return finalString;
     }
 }
