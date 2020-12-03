@@ -18,9 +18,10 @@ public class Tester {
         System.out.println("Please enter a new date for the first component in the format dd/mm/yyyy");
         String nd = sc.nextLine();
         sc.close();
-        co1.update_date(nd);
         aircraft.getComponents().remove(co1);
+        co1.update_date(nd);
         aircraft.getComponents().add(co1);
-        System.out.println("The new priority list is: " + aircraft.getPriorityList());
+        System.out.println("The new priority list is: \n" + aircraft.getPriorityList());
+        Operations op1 = new Operations(1,12.00,650.00,"01/01/2020","Every 650 hours");
     }
 }
