@@ -1,4 +1,13 @@
-public class operations {
+package aircraft;
+import java.util.*;  
+/**
+ * The Operations class contains information on all operations on a single aircraft.
+ * @author Khalid Williams
+ * @version 1.0
+ * @since 2020-11-21
+ */
+
+public class Operations {
     private int id;
     private String description;
     // private float interval;
@@ -7,7 +16,7 @@ public class operations {
     private float dateCW;
     private String note;
 
-    public operations(int id, String description, float interval, int dueDate, float timeRemaining, float dateCW, String note){
+    public Operations(int id, String description, float interval, int dueDate, float timeRemaining, float dateCW, String note){
         this.id = id;
         this.description = description;
         this.interval = interval;
