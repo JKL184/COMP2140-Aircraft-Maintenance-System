@@ -1,4 +1,5 @@
 import java.util.*;
+import aircraft;
 
 public class Menu {
     Scanner ans = new Scanner(System.in);
@@ -64,7 +65,7 @@ public class Menu {
     }
 
     private void Display_parts(){
-        System.out.println("Display");
+        ;
     }
 
    private void Display_statreport(){
