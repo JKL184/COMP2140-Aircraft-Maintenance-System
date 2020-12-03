@@ -1,6 +1,7 @@
 package aircraft;
 import java.text.SimpleDateFormat;  
-import java.util.Date;
+import java.util.*;  
+
 /**
  * The Component class contains information on a single Aircraft component.
  * @author Jordan Lewis
@@ -36,6 +37,13 @@ public class Components implements Comparable<Components>{
         }
     }
 
+
+    public HashMap<String,String> get_Component_info(){
+        HashMap<String,String> map=new HashMap<String,String>();//Creating HashMap
+        map.put("Item",this.item_name);    
+        map.put("S_No",this.serial_no);    
+        return map;
+    }
     /** 
      * @return String that represents the components's unique serial_no
      * Accessor method to return the serial#

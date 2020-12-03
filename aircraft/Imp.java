@@ -1,8 +1,8 @@
+package aircraft;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.util.HashMap;
 
 public class Imp {
     public HashMap<String, String> Aircraft_info = new HashMap<String, String>();
@@ -20,7 +21,7 @@ public class Imp {
 
     public Imp(String File_location){
         try {
-            String[] validSheets = {"Aircraft Information", "Operations", "Component Maintenance Record"};
+            String[] validSheets = {"Aircraft Information", "Operations", "Component Maintenance Record", "Component Maintenance Recor (2)"};
             FileInputStream file = new FileInputStream(new File(File_location));
             Workbook workbook = new XSSFWorkbook(file);
 
@@ -37,9 +38,8 @@ public class Imp {
                         case "Operations":
                             iOperations(sheet);
                             break;
-                        case "Component Maintenance Record":
-                            iComponent(sheet);
-
+                        case "Component Maintenance Recor (2)":
+                            iComponent2(sheet);
                     }
                 }
             }
@@ -197,4 +197,35 @@ public class Imp {
         }
         System.out.println(Components);
     }
+
+    private void iComponent2(Sheet sheet) {
+        String[] keys = {"Item", "P_No", "S_No", "Date", "RY", "RH", "Tot_I", "Past_T","Current_T", "AF_H", "T_rem", "D_due","INSP_HRS", "INSP_Type", "Mjor_type", "Mjor_time","Remarks"};
+        ArrayList<HashMap<String, String>> opHashes = new ArrayList<HashMap<String, String>>();
+        Iterator<Row> rowIterator = sheet.iterator();
+        int con = 0;
+        int oh = 0;
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+            Iterator<Cell> cellIterator = row.iterator();
+            con = 1;
+            HashMap<String, String> Comp_nfo = new HashMap<String, String>();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                if(row.getRowNum() > 3 && !(cellinfo(row.getCell(0)).equals("")) && con < keys.length){
+                    if(cell.getColumnIndex() != 0){
+                        Comp_nfo.put(keys[con], cellinfo(cell));
+                        con++;
+                    }
+
+                }
+            }
+            if(row.getRowNum() > 3 && !(cellinfo(row.getCell(0)).equals(""))){
+                Components.put(cellinfo(row.getCell(0)), Comp_nfo);
+            }
+        }
+        System.out.println("check");
+        System.out.println(Components);
+    }
+
+
 }
