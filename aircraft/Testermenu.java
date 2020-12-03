@@ -1,4 +1,6 @@
-public class Tester {
+package aircraft;
+
+public class Testermenu {
         public static void main(String args[]){
             Menu men = new Menu();
             Login nm;

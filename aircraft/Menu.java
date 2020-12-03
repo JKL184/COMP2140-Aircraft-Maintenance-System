@@ -1,5 +1,6 @@
+package aircraft;
+
 import java.util.*;
-import aircraft;
 
 public class Menu {
     Scanner ans = new Scanner(System.in);
