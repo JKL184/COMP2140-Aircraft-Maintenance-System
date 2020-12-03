@@ -1,5 +1,4 @@
 package aircraft;
-import java.util.*;  
 /**
  * The Operations class contains information on all operations on a single aircraft.
  * @author Khalid Williams
@@ -46,11 +45,11 @@ public class Operations {
         return this.note;
     }
 
-    public String updateNote(String note){
+    public void updateNote(String note){
         this.note = note;
     }
 
-    public String updateDescription(String description){
+    public void updateDescription(String description){
         this.description = description;
     }
 }
