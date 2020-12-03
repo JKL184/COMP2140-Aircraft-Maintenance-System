@@ -1,4 +1,7 @@
 package aircraft;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;  
+import java.util.Date;
 /**
  * The Component class contains information on a single Aircraft component.
  * @author Jordan Lewis
@@ -11,7 +14,7 @@ public class Components{
     private String maint_info;
     private int maint_cost;
     private String maint_engineer;
-    private String maint_date;
+    private Date maint_date;
     private String maint_interval;
 
     /**
@@ -27,7 +30,13 @@ public class Components{
         this.maint_info= maint_info;
         this.maint_cost=maint_cost;
         this.maint_interval=maint_interval;
-        this.maint_date=maint_date;
+        try{
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(maint_date);
+            this.maint_date = date1;
+        }
+        catch (Exception e){
+            System.out.println("Invalid date format");
+        }
     }
 
     /** 
@@ -58,11 +67,17 @@ public class Components{
      * @param ID represents the ID of the engineer that will be assigned to the component
      * Mutator method that sets the maintenance engineer of the component
          */
-    public void  append_engineer(String ID){
+    public void append_engineer(String ID){
         this.maint_engineer=ID;
     }
 
-    public void  update_date(String new_date){
-        this.maint_date=new_date;
+    public void update_date(String new_date){
+        try{
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(new_date);
+            this.maint_date = date1;
+        }
+        catch (Exception e){
+            System.out.println("Invalid date format");
+        }
     }
 }

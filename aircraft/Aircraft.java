@@ -6,16 +6,17 @@ import java.util.*;
  * @version 1.0
  * @since 2020-11-21
  */
-public class Aircraft{
+public class Aircraft implements Comparable<Components>{
     private String make;
     private String model;
     private String serial_no;
     private String registration_no; 
     private String dop;
     private String inspec_time; 
-    private float tach;
-    private float hobbs; 
+    private double tach;
+    private double hobbs; 
     private ArrayList<Operations> operations = new ArrayList<Operations>();
+    private ArrayList<Components> components = new ArrayList<Components>();
     /**
 	 * Constructor that accepts and stores the aircraft makes, model, serial#, registration #, date of production, Time of operation, inspection time, tachometer, hobbs, operations, 
          * @param make represents the aircraft make
@@ -28,7 +29,7 @@ public class Aircraft{
          * @param hobbs represents the number on the hobbs meter of the aircraft.
          */
     
-        public Aircraft(String make, String model,String serial_no,String registration_no, String dop, String inspec_time, float tach, float hobbs){
+        public Aircraft(String make, String model,String serial_no,String registration_no, String dop, String inspec_time, double tach, double hobbs){
         this.make=make;
         this.model=model;
         this.serial_no=serial_no;
@@ -55,8 +56,8 @@ public class Aircraft{
     /** 
      * @return HashMap that represents the Aircrafts's tachometer value and hobbs meter value
      */
-    public HashMap<String,Float> get_tach_hobbs(){
-        HashMap<String,Float> map=new HashMap<String,Float>();//Creating HashMap
+    public HashMap<String,Double> get_tach_hobbs(){
+        HashMap<String,Double> map=new HashMap<String,Double>();//Creating HashMap
         map.put("tach",this.tach);    
         map.put("hobbs",this.hobbs);    
         return map;
@@ -70,9 +71,23 @@ public class Aircraft{
     }
 
     /** 
-     * @return Operations class that holds all the operations that a 
+     * @return Operations ArrayList holds all the operations that the aircraft has had
      */
     public ArrayList<Operations> getOperations(){
         return this.operations;
+    }
+
+    public void addOperation(Operations op){
+        this.operations.add(op);
+    }
+
+    public void addComponent(Components co){
+        this.components.add(co);
+    }
+
+    @Override
+    public int compareTo(Components o) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
