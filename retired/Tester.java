@@ -23,5 +23,6 @@ public class Tester {
         aircraft.getComponents().add(co1);
         System.out.println("The new priority list is: \n" + aircraft.getPriorityList());
         Operations op1 = new Operations(1,12.00,650.00,"01/01/2020","Every 650 hours");
+        System.out.println("The date of the last operation added is: " + op1.getDate());
     }
 }
